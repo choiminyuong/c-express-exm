@@ -1,10 +1,8 @@
-OBJECTS = chap5.o chap6.o
+chap5: chap5.o
+	gcc -o chap5 chap5.o
 
-chap5.o : gcc -c chap5.cpp
-chap6.o : gcc -c chap6.cpp 
-
-c_express: $(OBJECTS) gcc -o c_express $(OBJECTS) 
-
+chap5.o : chap5.cpp 
+	gcc -c chap5.cpp
 
 clean:
-	rm $(OBJECTS)
+	rm *.o
