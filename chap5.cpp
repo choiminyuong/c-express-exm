@@ -39,14 +39,14 @@ int main() {
 
 void fomulaA(float x) {
 	//7 * x*x*x - 6 * x*x + b*x + c;
-	printf("타입 A : %2f - %2f + %2fb + c ", 7 * x*x*x,6 * x*x,x);
+	printf("타입 A : %.2f - %.2f + %.2fb + c \n", 7 * x*x*x,6 * x*x,x);
 
 	return;
 }
 
 void fomulaB(float x) {
 	//2 * x*x - 6 * x + 1 / (x + 1);
-	printf("타입 B : %2f \n", 2 * x*x - 6 * x + 1 / (x + 1));
+	printf("타입 B : %.2f \n", 2 * x*x - 6 * x + 1 / (x + 1));
 		
 	return;
 }
