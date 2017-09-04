@@ -8,12 +8,48 @@
 	(b) 2x^2-6x+1/(x+1)
 */
 
-int main(){
+void fomulaA(float x);
+void fomulaB(float x);
 
-	flaot
-	return 0;
+int main() {
+	float x = 0;
+	char type = 0;
+
+	puts("확인할 식의 타입을입력 ");
+	puts("tyep A : 7 * x^3 - 6 * x^2 + 9 * a * x^2 + b * x + c");
+	puts("tyep B : 2 * x^2 -6 * x + 1 / (x+1)");
+	scanf("%c", &type);
+
+	puts("실수 입력");
+	scanf("%f",&x);
+
+	switch (type)
+	{
+		case 'a':
+			fomulaA(x);
+			break;
+		case 'b':
+			fomulaB(x);
+			break;
+		default:
+			break;
+	}
+
 }
 
+void fomulaA(float x) {
+	//7 * x*x*x - 6 * x*x + b*x + c;
+	printf("타입 A : %2f - %2f + %2fb + c ", 7 * x*x*x,6 * x*x,x);
+
+	return;
+}
+
+void fomulaB(float x) {
+	//2 * x*x - 6 * x + 1 / (x + 1);
+	printf("타입 B : %2f \n", 2 * x*x - 6 * x + 1 / (x + 1));
+		
+	return;
+}
 /*	
 	2 - 12.
 	2년간의 이자를 계산하는 프로그램을 작성하여 보자
