@@ -58,23 +58,53 @@ void fomulaB(float x) {
 	이자는 복리로 계산된다고 가정하라.
 	즉 첫해의 이자는 예금액에 이율을 곱하면 되지만 
 	둘째해의 이자는 예금액과 첫해의 이자를 더한 액수에 이율을 곱하여야 한다.
+
+	* 예금액을 입력하시오 : 1000
+	* 연이율을 입력하시오.(단위퍼센트) : 5.0
+	* 2년후의 예금액은 1102.5 입니다.
+
 */
 	
+
+void interest_sub (float save_money, float interest100, float eja, int year);
+
 int main(){
 	
-	int save_money = 0;
-	int interest =0;
-	
-	// 원금 * 이율 *(일수 /365) = 이자 금액
- 	// 복리계산 : 매년이자가 발생하고 그 이자에 이자 발생.
- 	// 복리원리금= 투자원금 x (1+ 이율)투자기간
+	int save_money = 0, year = 0; // 예금액, suseh
+	float interest100 = 0, interest = 0;
+	float eja = 0, result = 0;
+	// 첫해의 이자 : (예금액 + 0) * 이율(퍼센트:x/100)
+	// 둘째해의 이자 : (예금액 + 첫해 이자) * 이자율(x/100)
 
 	puts("예금액을입력하시오");
-	scanf("%d", &save_mpney);
-	puts("연이율");
-	scanf();
+	scanf("%d", &save_money);
+	puts("연이율을 입력하시오.");
+	scanf("%f", &interest);
+	puts("계산할 년도를 입력하시오.");
+	scanf("%d",&year);
+
+	interest100  = interest / 100;
+	
+	interest_sub(save_money, interest100, eja, year);
 
 	return 0;
+}
+
+
+void interest_sub (float save_money, float interest100, float eja, int year){
+
+	float result_money=save_money;
+
+	for(int i=0; i<year; i++)
+	{
+		eja = (save_money+eja) * interest100;
+		result_money +=  eja;  
+
+		printf("이자 결과 : %.2f\n",eja);
+		printf("입금 결과 : %.2f\n", result_money);
+	}
+
+	return;
 }
 
 	
