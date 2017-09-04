@@ -7,7 +7,7 @@
 	(a) 7x^3-6x^2+9ax^2+bx+c
 	(b) 2x^2-6x+1/(x+1)
 */
-
+/*
 void fomulaA(float x);
 void fomulaB(float x);
 
@@ -50,6 +50,7 @@ void fomulaB(float x) {
 		
 	return;
 }
+*/
 /*	
 	2 - 12.
 	2년간의 이자를 계산하는 프로그램을 작성하여 보자
@@ -58,6 +59,25 @@ void fomulaB(float x) {
 	즉 첫해의 이자는 예금액에 이율을 곱하면 되지만 
 	둘째해의 이자는 예금액과 첫해의 이자를 더한 액수에 이율을 곱하여야 한다.
 */
+	
+int main(){
+	
+	int save_money = 0;
+	int interest =0;
+	
+	// 원금 * 이율 *(일수 /365) = 이자 금액
+ 	// 복리계산 : 매년이자가 발생하고 그 이자에 이자 발생.
+ 	// 복리원리금= 투자원금 x (1+ 이율)투자기간
+
+	puts("예금액을입력하시오");
+	scanf("%d", &save_mpney);
+	puts("연이율");
+	scanf();
+
+	return 0;
+}
+
+	
 
 /*
 	3 - 14.
