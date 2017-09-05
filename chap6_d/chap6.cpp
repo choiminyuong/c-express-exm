@@ -7,6 +7,7 @@
 	면접을 계산하는데 필요한 숫자들을 사용자로부터 입력받는다.
 */
 
+/*
 void size_tri();
 void size_squ();
 void size_cir();
@@ -85,16 +86,39 @@ void size_cir()
 
 	printf("원의 넓이 : %d\n",size);
 }
+*/
 
 /*
 	2 - 4.
-	상저에서 하나에 100원인 물건을 판매가ㅗ 있다고 가정하자.
+	상점에서 하나에 100원인 물건을 판매하고 있다 가정하자.
 	물건을  10개 이상 구입하는 고객에게는 10% 할인을 해준다고 하자.
 	사용자가 구입한 물건의 개수를 입력하면 전체 가격이 얼마인지를 계산해주는 프로그램을 작성하라
 	즉 물건의 개수가 10이상이면 10% 할인한 가격으로 계산을 하여야한다.
 	if-else문을 사용하라
 */
 
+#define PRODUCT_VALUE 100
+
+int main()
+{
+	int pro_num = 0;
+	int result = 0;
+	
+	puts("상품의 갯수를 입력하시오");	
+	scanf("%d",&pro_num);
+
+	if(pro_num >= 10 ){
+		result = (int)(pro_num * PRODUCT_VALUE);
+		result = result - (result * 0.1);
+		printf("결제금액 : %d원 \n",result);
+
+	} else {
+		result = pro_num * PRODUCT_VALUE;
+		printf("결제금액 : %d원 \n",result);
+	}
+
+	return 0;
+}
 /*
 	3 - 6.
 	키보드에서 영문자 하나를 읽어서 모음과 자음을구분하는 프로그램을 작성하여보자.
