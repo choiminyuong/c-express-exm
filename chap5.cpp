@@ -65,7 +65,7 @@ void fomulaB(float x) {
 
 */
 	
-
+/*
 void interest_sub (float save_money, float interest100, float eja, int year);
 
 int main(){
@@ -106,18 +106,36 @@ void interest_sub (float save_money, float interest100, float eja, int year){
 
 	return;
 }
-
-	
+*/
 
 /*
 	3 - 14.
 	정수(i)를 다른 정수(m)의 배수로 올림하는 프로그램을 작성하라
-	예를 들어서 123을 10의 배수로 올리하면 123보다 큰 10의 배수 중에서 가장 가까운 것은 130이될 것이다.
+	예를 들어서 123을 10의 배수로 올림하면 123보다 큰 10의 배수 중에서 가장 가까운 것은 130이될 것이다.
 	이것은 다음과 같은 식을 이용하여 구할 수 있다.
 	다음 배수 = i+m-(i%m)
 	사용자로부터 i와 m의 값을 입력받아서 가장 가까운 다음 배수를 구하느 프로그램을 작성하여 보라.
 	여러가지 값을 입력하여 테스트하여 보라
 */
+
+int main(){
+
+	int i,m=0;
+	int iuptom =0; 
+
+	puts("한개의 정수를 입력하시오");
+	scanf("%d",&i);
+
+	puts("올림하고자하는 정수를 입력하시오");
+	scanf("%d",&m);
+
+	iuptom = i+m-(i%m);
+
+	printf("i : %d m : %d \n",i,m);
+	printf("result : %d \n",iuptom);
+
+	return 0;
+}
 
 /*
 	4 - 15.
