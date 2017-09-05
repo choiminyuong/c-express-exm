@@ -127,6 +127,8 @@ int main()
 	키보드에서 영문자 하나를 읽어서 모음과 자음을구분하는 프로그램을 작성하여보자.
 	단, 함수를 사용하지 말고 switch문만을 사용하여 문자를 구분하라.
 */
+
+/*
 int main()
 {
 	char charter=0;
@@ -154,6 +156,7 @@ int main()
 	}
 	return 0;
 }
+*/
 
 /*
 	4 - 8.
@@ -176,6 +179,61 @@ int main()
 	먼저 사용자에게 자유 이용권인지, 아니면 입장권인지를 질문한 후에
 	사용자의 나이, 현재시각을 입력받아서 지불하여야 하는 요금을 화면에 출력한다.
 */
+
+int ticket_type();
+int sort_big_small();
+
+int main()
+{
+	int type = 0;
+
+	switch(sort_big_small()){
+		case '0':
+			type = ticket_type();
+
+			break;
+		case '1':
+			type = ticket_type();
+			break;
+		default:
+			puts("잘못된 선택입니다.");
+			break;
+	}
+	
+	return 0 ;
+}
+
+
+int sort_big_small()
+{
+	// age_type 
+	// 0 : 소인
+	// 1 : 대인
+	// 3 : 유아 
+	int age = 0, age_type = 0;;
+
+	puts("나이를 입력해주세요");
+	scanf("%d",&age);
+
+	if(age < 20){
+		if(age > 8){
+			return age_type = 0; // 0 : 소아
+		} else {
+			return age_type = 3;
+		}
+	} else 
+		return age_type = 1;
+}
+
+int ticket_type()
+{
+	int ticket_type=0;
+
+	puts("구입할 티겟의 종류를 선택해주세요. 자유이용권 : 0 입장권만 : 1");
+	scanf("%d", &ticket_type);
+
+	return ticket_type;
+}
 /*
 	5 - 13.
 	컴퓨터와 가위, 바위, 보 게임을 하는 프로그램을 작성하라.
