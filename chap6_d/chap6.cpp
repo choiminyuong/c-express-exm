@@ -97,6 +97,7 @@ void size_cir()
 	if-else문을 사용하라
 */
 
+/*
 #define PRODUCT_VALUE 100
 
 int main()
@@ -119,11 +120,40 @@ int main()
 
 	return 0;
 }
+*/
+
 /*
 	3 - 6.
 	키보드에서 영문자 하나를 읽어서 모음과 자음을구분하는 프로그램을 작성하여보자.
 	단, 함수를 사용하지 말고 switch문만을 사용하여 문자를 구분하라.
 */
+int main()
+{
+	char charter=0;
+
+	puts("하나의 영문자를 입력하시오");
+	scanf("%c",&charter);
+
+	switch(charter)
+	{
+		case 'a':
+		case 'A':
+		case 'e':
+		case 'E':
+		case 'o':
+		case 'O':
+		case 'u':
+		case 'U':
+		case 'i':
+		case 'I':
+			puts("입력한 영문자는 모음");
+		break;
+		default :
+			puts("입력한 영문자는 자음");
+		break;
+	}
+	return 0;
+}
 
 /*
 	4 - 8.
