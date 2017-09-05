@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 /*
 	1 - 10.
@@ -148,6 +149,7 @@ int main(){
 	V = (4pr^2)/3
 */
 
+/*
 #define PI 3.14
 
 int main(){
@@ -163,6 +165,7 @@ int main(){
 
 	printf("구의 표면적 : %.2f 구의 궤적 : %.2f\n",shape_a,shape_v);
 }
+*/
 
 /*
 	5 - 19
@@ -173,14 +176,44 @@ int main(){
 	x = (-b-(b^2-4ac)^1/2)2a
 */
 
-/*
 int main()
 {
 
-	int equation =0;
+	float equation_p = 0;
+	float equation_m = 0;
+	float distinction= 0, sq_distinction=0;
+	int a, b, c=0; 
 	
-	puts("3개의 정수를 입력하시오");
-	scanf("%d %d %d",&a,&v,&c);
+	puts("2차 방정식 근의 공식을 위한 3개의 정수를 입력하시오");
+	scanf("%d %d %d",&a,&b,&c);
+
+	distinction = b*b-4*a*c;
+
+	if(distinction > 0){
+		sq_distinction = sqrt(distinction);
+
+		equation_p = (-b+sq_distinction)/(2*a);
+		equation_m = (-b-sq_distinction)/(2*a);
+
+		puts("두개의 서로 다른 실근을 갖습니다.");
+
+		printf("+x : %.2f, -x : %.2f \n",equation_p,equation_m);
+		printf("a,b,c : %d %d %d \n",a,b,c);
+		printf("D : %.2f  \n",distinction);
+		printf("sqrt D : %.2f  \n",	sq_distinction);
+
+	} else if(distinction = 0){
+		sq_distinction=sqrt(distinction);
+		equation_p = (-b+sq_distinction)/2*a;
+		
+		puts("서로같은 실근(중근)을 갖습니다.");
+		printf("+x : %.2f  \n",equation_p);
+		printf("a,b,c : %d %d %d \n",a,b,c);
+		printf("+x : %.2f  \n",distinction);
+
+	} else {
+		puts("허근을 갖습니다. 예제에서는 허근을 따로 다루지 않습니다.");
+	}
+
 	return 0;
 }
-*/
