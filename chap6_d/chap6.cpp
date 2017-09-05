@@ -1,9 +1,90 @@
+#include <stdio.h>
+
 /*
 	1 - 2.
-	사용자로부터 하나의 문자를 입력받아서, 문자가 'R'이면 사각형의 면저을 계산하고,
+	사용자로부터 하나의 문자를 입력받아서, 문자가 'R'이면 사각형의 면적을 계산하고,
 	'T'이면 삼각형의 면적을, 'C'이면 원의 면접을 계산한다.
 	면접을 계산하는데 필요한 숫자들을 사용자로부터 입력받는다.
 */
+
+void size_tri();
+void size_squ();
+void size_cir();
+
+int main()
+{
+	char type = 0;
+
+	puts("확인하고자 하는 면적의 타입을 입력 하시오\t'R'은 사각형\t'T'는 삼각형\t'C'는 원");
+	scanf("%c",&type);
+
+	// type에 입력되는 값에 따라 각각의 면적을구함
+	switch(type)
+	{
+		// 사각형의 면적
+		case 'R':
+			size_squ();
+		break;
+		// 삼각형의 면적
+		case 'T':
+			size_tri();
+		break;
+		// 원의 면적
+		case 'C':
+			size_cir();
+		break;
+		default:
+		break;
+	}
+}
+
+void size_tri()
+{
+	// (밑*높)/2
+	int s,h=0;
+	int size = 0;
+	
+	puts("넓이를 구할 도형의 밑변과 높이를 입력하시오");
+	puts("밑변을 입력하시오");
+	scanf("%d",&s);
+	puts("높이를 입력하시오");
+	scanf("%d",&h);
+
+	size = (s*h)/2;
+
+	printf("삼각형의 넓이 : %d \n",size);
+}
+
+void size_squ()
+{
+	// h*s
+	int s,h=0;
+	int size = 0;
+	
+	puts("넓이를 구할 도형의 밑변과 높이를 입력하시오");
+	puts("밑변을 입력하시오");
+	scanf("%d",&s);
+	puts("높이를 입력하시오");
+	scanf("%d",&h);
+
+	size = s*h;
+
+	printf("사각형의 넓이 : %d\n",size);
+}
+
+void size_cir()
+{
+	// pi*r^2
+	int r=0,size=0;
+	float pi = 3.14;
+	
+	puts("넓이를 구할 원의 반지름을 입력하시오");
+	scanf("%d",&r);
+
+	size = (int)(r*r*pi);
+
+	printf("원의 넓이 : %d\n",size);
+}
 
 /*
 	2 - 4.
