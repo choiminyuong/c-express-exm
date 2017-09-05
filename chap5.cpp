@@ -118,6 +118,7 @@ void interest_sub (float save_money, float interest100, float eja, int year){
 	여러가지 값을 입력하여 테스트하여 보라
 */
 
+/*
 int main(){
 
 	int i,m=0;
@@ -136,6 +137,7 @@ int main(){
 
 	return 0;
 }
+*/
 
 /*
 	4 - 15.
@@ -146,6 +148,21 @@ int main(){
 	V = (4pr^2)/3
 */
 
+#define PI 3.14
+
+int main(){
+
+	float shape_r, shape_a, shape_v;
+	
+	puts("구의 반지금을 입력하시오");
+	scanf("%f",&shape_r);
+
+	shape_a = 4.*PI*shape_r*shape_r;
+	shape_v = shape_a/3;
+
+
+	printf("구의 표면적 : %.2f 구의 궤적 : %.2f\n",shape_a,shape_v);
+}
 /*
 	5 - 19
 	2차 방정식 ax^2+bx+c의 근을 구하는 프로그램을 작성하라.
