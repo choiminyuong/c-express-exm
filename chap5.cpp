@@ -158,11 +158,12 @@ int main(){
 	scanf("%f",&shape_r);
 
 	shape_a = 4.*PI*shape_r*shape_r;
-	shape_v = shape_a/3;
+	shape_v = shape_a*shpe_r/3;
 
 
 	printf("구의 표면적 : %.2f 구의 궤적 : %.2f\n",shape_a,shape_v);
 }
+
 /*
 	5 - 19
 	2차 방정식 ax^2+bx+c의 근을 구하는 프로그램을 작성하라.
@@ -172,3 +173,14 @@ int main(){
 	x = (-b-(b^2-4ac)^1/2)2a
 */
 
+/*
+int main()
+{
+
+	int equation =0;
+	
+	puts("3개의 정수를 입력하시오");
+	scanf("%d %d %d",&a,&v,&c);
+	return 0;
+}
+*/
