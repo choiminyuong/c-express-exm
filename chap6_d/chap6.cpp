@@ -180,27 +180,68 @@ int main()
 	사용자의 나이, 현재시각을 입력받아서 지불하여야 하는 요금을 화면에 출력한다.
 */
 
-int ticket_type();
-int sort_big_small();
+int	ticket_type(); 		// 티겟 종류
+int time_set(); // 시간
+int sort_big_small();	// 대,소인 구분
+void money_reckoning(int age, int time, int ticket); //정산
 
 int main()
 {
-	int type = 0;
+	int type_ticket = 0, time=0;
+	int man_type = 0;
 
-	switch(sort_big_small()){
-		case '0':
-			type = ticket_type();
+	man_type = sort_big_small();
 
-			break;
-		case '1':
-			type = ticket_type();
-			break;
+	switch(man_type){
+		case 0: puts("소인.");
+			type_ticket = ticket_type();
+			time = time_set();
+		break;
+		case 1:
+			puts("유아.");
+		break;
+		case 2:
+			puts("대인.");
+		break;
 		default:
 			puts("잘못된 선택입니다.");
-			break;
+		break;
 	}
-	
 	return 0 ;
+}
+
+void money_reckoning(int age, int time, int ticket)
+{
+	switch(ticket){
+		// 자유
+		case 0:
+			// 소인
+			if(age == 0){
+		      // 주, 야
+			} // 대인
+			else if(age == 1){
+			} // 유아
+			else if(age == 2){
+			} // 잘못된 경우 
+			else{
+			}
+		break;
+		// 입장권만
+		case 1:
+			// 소인
+			if(age == 0){
+			} // 대인
+			else if(age == 1){
+			} // 유아
+			else if(age == 2){
+			} // 잘못된 경우 
+			else{
+			}
+		break;
+		default:
+		break;
+	}
+	return ;
 }
 
 
@@ -209,8 +250,10 @@ int sort_big_small()
 	// age_type 
 	// 0 : 소인
 	// 1 : 대인
-	// 3 : 유아 
-	int age = 0, age_type = 0;;
+	// 2 : 유아 
+
+	int age = 0;
+	int age_type = 0;
 
 	puts("나이를 입력해주세요");
 	scanf("%d",&age);
@@ -219,21 +262,55 @@ int sort_big_small()
 		if(age > 8){
 			return age_type = 0; // 0 : 소아
 		} else {
-			return age_type = 3;
+			return age_type = 1;
 		}
-	} else 
-		return age_type = 1;
+	} else{
+		return age_type = 2;
+	}
 }
 
 int ticket_type()
 {
-	int ticket_type=0;
+	int type=0;
 
 	puts("구입할 티겟의 종류를 선택해주세요. 자유이용권 : 0 입장권만 : 1");
-	scanf("%d", &ticket_type);
+	scanf("%d", &type);
 
-	return ticket_type;
+	switch(type){
+		// 자유 이용권일때
+		case 0:
+			return type=0;
+			break;
+		// 입장권만
+		case 1:
+			return type=1;
+			break;
+		default:
+			puts("해당 티켓의 종류는 없습니다.");
+			return type=2;
+			break;
+	}
 }
+
+int time_set()
+{
+	int time = 0;
+	puts("이용 시간을 입력하세요");
+	scanf("%d",&time);
+
+	time %= 24;
+
+	if(time >= 17 && time <= 24){
+		// 야간
+		return 0;
+	} else{
+		// 주간
+		return 1;
+	}
+}
+
+
+
 /*
 	5 - 13.
 	컴퓨터와 가위, 바위, 보 게임을 하는 프로그램을 작성하라.
