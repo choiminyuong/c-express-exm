@@ -180,6 +180,8 @@ int main()
 	사용자의 나이, 현재시각을 입력받아서 지불하여야 하는 요금을 화면에 출력한다.
 */
 
+/*
+
 int	ticket_type(); 		// 티겟 종류
 int time_set(); // 시간
 int sort_big_small();	// 대,소인 구분
@@ -203,10 +205,20 @@ int main()
 			money_reckoning(man_type, time, type_ticket); //정산
 		break;
 		case 1:
-				puts("유아.");
+			//puts("유아.");
+			// 티겟의 종류를 구분
+			type_ticket = ticket_type();
+			// 티겟의 주,야간 구분
+			time = time_set();
+			money_reckoning(man_type, time, type_ticket); //정산
 		break;
 		case 2:
-			puts("대인.");
+			//puts("대인.");
+			// 티겟의 종류를 구분
+			type_ticket = ticket_type();
+			// 티겟의 주,야간 구분
+			time = time_set();
+			money_reckoning(man_type, time, type_ticket); //정산
 		break;
 		default:
 			puts("잘못된 선택입니다.");
@@ -214,22 +226,6 @@ int main()
 	}
 	return 0 ;
 }
-/*
-자유 이용권 
-	대인 :
-		주간		   : 34,000
-		야간(5시 이후) : 29,000
-	소인 : 
-		주간           : 25,000
-		야간(5시 이후) : 21,000
-입장권
-	대인 :
-		주간           : 27,000
-		야간(5시 이후) : 23,000
-	소인 :
-		주간		   : 20,000
-		야간(5시 이후) : 17,000
-*/
 void money_reckoning(int age, int time, int ticket)
 {
 	switch(ticket){
@@ -239,53 +235,73 @@ void money_reckoning(int age, int time, int ticket)
 			if(age == 0){
 				  // 주, 야간 구분 : 야간
 				if(time == 0){
-					puts("자유이용권, 소인, 야간 가격 : \\21000" );
+					puts("자유이용권, 소인, 야간 가격 : 21,000원" );
 				} // 주, 야간 구분 : 주간
 				else if(time == 1) {
+					puts("자유이용권, 소인, 주간 가격 : 25,000원" );
 
 				} else {
-
+					puts("잘못된 입력입니다.");
 				}
 			} // 대,소인 구분 : 유아 
 			else if(age == 1){
-
+				puts("영,유아는 제외");
 			} // 대,소인 구분 : 대인
 			else if(age == 2){
-
+				if(time == 0){ // 0 : 야간
+					puts("자유이용권, 대인, 야간 가격 : 29,000원" );
+				} // 주, 야간 구분 : 주간
+				else if(time == 1) {
+					puts("자유이용권, 대인, 주간 가격 : 34,000원" );
+				} else {
+					puts("잘못된 입력입니다.");
+				}
 			} // 잘못된 경우 
 			else{
+				puts("대,소인이 아닌 해당사항 없는 입력입니다.");
 			}
 		break;
 		// 입장권만
 		case 1:
 			  // 대,소인 구분 : 소인
 			if(age == 0){
-
+				if(time == 0)
+					puts("입장권, 소인, 야간 가격 : 17,000원" );
+				else if(time == 1) 
+					puts("입장권, 소인, 주간 가격 : 20,000원" );
+				 else 
+					puts("잘못된 입력입니다.");
 			} // 대,소인 구분 : 유아 
-			else if(age == 1){
-
-			} // 대,소인 구분 : 대인
+			else if(age == 1)
+				puts("유아는 해당 사항 없음");
+			// 대,소인 구분 : 대인
 			else if(age == 3){
-
+				if(time == 0)
+					puts("입장권, 대인, 야간 가격 : 23,000원" );
+				 // 주, 야간 구분 : 주간
+				else if(time == 1) 
+					puts("입장권, 대인, 주간 가격 : 27,000원" );
+				else 
+					puts("잘못된 입력입니다.");
 			} // 잘못된 경우 
-			else{
-			}
+			else
+				puts("대,소인이 아닌 해당사항 없는 입력입니다.");
 		break;
 		default:
-			
+		puts("잘못된 입력입니다.");
 		break;
 	}
 	return ;
 }
 
 
+// age_type 
+// 0 : 소인
+// 1 : 대인
+// 2 : 유아 
+
 int sort_big_small()
 {
-	// age_type 
-	// 0 : 소인
-	// 1 : 대인
-	// 2 : 유아 
-
 	int age = 0;
 	int age_type = 0;
 
@@ -346,6 +362,7 @@ int time_set()
 	}
 }
 
+*/
 
 
 /*
