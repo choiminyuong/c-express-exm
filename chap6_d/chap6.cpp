@@ -194,11 +194,16 @@ int main()
 
 	switch(man_type){
 		case 0: puts("소인.");
+
+			// 티겟의 종류를 구분
 			type_ticket = ticket_type();
+			// 티겟의 주,야간 구분
 			time = time_set();
+
+			money_reckoning(man_type, time, type_ticket); //정산
 		break;
 		case 1:
-			puts("유아.");
+				puts("유아.");
 		break;
 		case 2:
 			puts("대인.");
@@ -209,36 +214,65 @@ int main()
 	}
 	return 0 ;
 }
-
+/*
+자유 이용권 
+	대인 :
+		주간		   : 34,000
+		야간(5시 이후) : 29,000
+	소인 : 
+		주간           : 25,000
+		야간(5시 이후) : 21,000
+입장권
+	대인 :
+		주간           : 27,000
+		야간(5시 이후) : 23,000
+	소인 :
+		주간		   : 20,000
+		야간(5시 이후) : 17,000
+*/
 void money_reckoning(int age, int time, int ticket)
 {
 	switch(ticket){
 		// 자유
 		case 0:
-			// 소인
+			  // 대,소인 구분 : 소인
 			if(age == 0){
-		      // 주, 야
-			} // 대인
+				  // 주, 야간 구분 : 야간
+				if(time == 0){
+					puts("자유이용권, 소인, 야간 가격 : \\21000" );
+				} // 주, 야간 구분 : 주간
+				else if(time == 1) {
+
+				} else {
+
+				}
+			} // 대,소인 구분 : 유아 
 			else if(age == 1){
-			} // 유아
+
+			} // 대,소인 구분 : 대인
 			else if(age == 2){
+
 			} // 잘못된 경우 
 			else{
 			}
 		break;
 		// 입장권만
 		case 1:
-			// 소인
+			  // 대,소인 구분 : 소인
 			if(age == 0){
-			} // 대인
+
+			} // 대,소인 구분 : 유아 
 			else if(age == 1){
-			} // 유아
-			else if(age == 2){
+
+			} // 대,소인 구분 : 대인
+			else if(age == 3){
+
 			} // 잘못된 경우 
 			else{
 			}
 		break;
 		default:
+			
 		break;
 	}
 	return ;
@@ -295,6 +329,7 @@ int ticket_type()
 int time_set()
 {
 	int time = 0;
+
 	puts("이용 시간을 입력하세요");
 	scanf("%d",&time);
 
@@ -302,9 +337,11 @@ int time_set()
 
 	if(time >= 17 && time <= 24){
 		// 야간
+		puts("야간");
 		return 0;
 	} else{
 		// 주간
+		puts("주간");
 		return 1;
 	}
 }
