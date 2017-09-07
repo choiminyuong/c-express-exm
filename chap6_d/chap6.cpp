@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /*
 	1 - 2.
@@ -373,6 +375,51 @@ int time_set()
 	사용자의선택이 끝나면 컴퓨터는 누가 무엇을 선택하였는지, 누가 이겼는지 또는 둘이 비겼는지를 알려준다. 
 */
 
+void gawibawibo(int );
+int input_check(int );
+
+int main()
+{
+	int user = 0, user_gbb=0;
+	
+	// 사용자한테 값(가위,바위,보 입력)
+	puts("가위,바위,보중 하나를 입력하세요 (가위:0, 바위:1, 보:2)");
+	scanf("%d",&user);
+	fflush(stdin);
+
+	user_gbb = input_check(user);
+	// 입력값 <-> rand 값 비교 후 결과 출력
+	gawibawibo(user_gbb);
+
+	return 0;
+}
+
+// % 연산자를이용한 값 체크
+int input_check(int user)
+{
+	user %= 3;
+
+	return user;
+}
+
+// 값 체크 후에 비교.
+void gawibawibo(int user)
+{
+	int com_ggb = 0;
+
+	srand(time(NULL));	// seed적용
+	
+	com_ggb = rand() % 3;
+	
+	if(com_ggb > user){
+		puts("컴 승");
+	} else if(com_ggb < user){
+		puts("사용자 승");
+	} else 
+		puts("비김");
+
+	return;
+}
 /*
 	6 - 19
 	일주일 단위로 임금을 지금받는 계약직을 위한 임금계산 프로그램을 작성하여 보자.
