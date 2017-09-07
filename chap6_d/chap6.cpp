@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
+
 
 /*
 	1 - 2.
@@ -16,7 +18,7 @@ void size_cir();
 
 int main()
 {
-	char type = 0;
+    char type = 0;
 
 	puts("확인하고자 하는 면적의 타입을 입력 하시오\t'R'은 사각형\t'T'는 삼각형\t'C'는 원");
 	scanf("%c",&type);
@@ -427,19 +429,94 @@ void gawibawibo(int user)
 	6 - 19
 	일주일 단위로 임금을 지금받는 계약직을 위한 임금계산 프로그램을 작성하여 보자.
 	임금은 다음과 같은 규칙에 의하여 계산한다.
-	*시간당 기본 임금 : 3,100원/시간
-	*초과 근무 수당:1주일에 30시간을 넘는 초과 근무 시간에 대해서는 시간당 기본 임금의 1.2배를 지급한다.
-	*세율 : 1주일에 10만원 이하는 5%, 10만원 이상은 10%를 적용한다.
+	* 시간당 기본 임금 : 3,100원/시간
+	* 초과 근무 수당:1주일에 30시간을 넘는 초과 근무 시간에 대해서는 시간당 기본 임금의 1.2배를 지급한다.
+	* 세율 : 1주일에 10만원 이하는 5%, 10만원 이상은 10%를 적용한다.
 */
+
+#define TIME_ERROR 200
+#define TIME_MONEY 3100
+#define OVERLINE 100000
+#define TAX50 0.05
+#define TAX10 0.1
+#define ALPHA 1.2
+
+int work_time();
+int time_pay(int);
+void how_tax(int);
 
 int main()
 {
-	return 0;
+    int time = 0, notax = 0;
+
+    time = work_time();
+
+    if(isalpha(time)){
+		puts("시간은 숫자로 입력해주세요.");
+
+    } else if(time == TIME_ERROR){
+		puts("주 최대 근무시간은 168시간을 초과할수 없습니다.");
+    } else {
+		notax = time_pay(time);
+		how_tax(notax); 
+    }
+
+    return 0;
 }
 
 
 // 근무 시간 계산.
+int work_time()
+{
+    int time = 0;
+
+    puts("근무 시간을 입력하세요");
+    scanf("%d",&time);
+    fflush(stdin);
+
+    if(time > 0 && time < 168){
+		return time;
+    } else{
+	time = TIME_ERROR;
+		return time;
+    }
+}
+
 // 계산시 초관 근무, 1주일에 30시간.
+int time_pay(int time){
+	int over_time = 0;
+	int pay = 0;
+
+	if(time > 30){
+		over_time = time - 30;	//초과 근무시간
+		time -= over_time;	// 초과근무 시간을 제외한 시간
+		pay = time * TIME_MONEY;
+		pay += over_time * TIME_MONEY * ALPHA;
+		return pay;
+	} else{
+		pay = time * TIME_MONEY;
+		return pay;
+	}
+}
+
+// 임금 세금 계산.
+void how_tax(int notax){
+
+	int apply = 0;
+
+	if(notax < OVERLINE){
+		apply = (int)(notax * TAX50);
+		notax -= apply;
+
+		printf("세금 : %d  세후 : %d\n",apply, notax);
+		return ;
+	} else {
+		apply = (int)(notax * TAX10); 
+		notax -= apply;
+		printf("세금 : %d  세후 : %d\n",apply, notax);
+	}
+}
+
 
 /*
 7- 22
