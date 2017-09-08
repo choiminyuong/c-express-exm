@@ -433,7 +433,7 @@ void gawibawibo(int user)
 	* 초과 근무 수당:1주일에 30시간을 넘는 초과 근무 시간에 대해서는 시간당 기본 임금의 1.2배를 지급한다.
 	* 세율 : 1주일에 10만원 이하는 5%, 10만원 이상은 10%를 적용한다.
 */
-
+/*
 #define TIME_ERROR 200
 #define TIME_MONEY 3100
 #define OVERLINE 100000
@@ -516,6 +516,7 @@ void how_tax(int notax){
 		printf("세금 : %d  세후 : %d\n",apply, notax);
 	}
 }
+*/
 
 
 /*
@@ -524,10 +525,33 @@ pH는 용액의 산성도를 측정하기 위한 수단이다. pH는 다음과 �
 pH=-log10[H^+]
 여기서 
 	pH < 3.0 : 강산성
-	pH > 7.0 : 산성
 	pH = 7.0 : 중성
 	pH > 7.0 : 알칼리성
+	pH > 7.0 : 산성
 	pH > 10.0 : 강알칼리성
 	사용자로부터 pH값을 입력받아서 용액이 산성인지 알칼리성인지를 알려주는 프로그램을 작성하여 보라.
 */
+
+int main(){
+	float ph = 0;
+
+	puts("PH를 입력하시오");
+	scanf("%f",&ph);
+	fflush(stdin);
+
+	if(ph == 7){
+		puts("중성");
+	} else if(ph < 3 && ph > 0){
+		puts("강산성");
+	} else if(ph >= 3 && ph < 7){
+		puts("산성");
+	} else if(ph  > 7 && ph <= 10){
+		puts("알칼리성");
+	} else if(ph > 10) {
+		puts("강알칼리성");
+	} else {
+		puts("잘못된 입력");
+	}
+	return 0;
+}
 
