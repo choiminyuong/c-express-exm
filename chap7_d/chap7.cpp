@@ -59,14 +59,14 @@ int main()
 				sum_for();
 			break;
 			case 'c': 
-
+				sum_do_while();
 			break;
 
-			default:
-				puts("a,b,c외에 잘못된 문자를 입력하였습니다.");
-			break;
-		}
-	} else {
+		default:
+			puts("a,b,c외에 잘못된 문자를 입력하였습니다.");
+		break;
+	}
+} else {
 		puts("문자를 입력하시오");
 	}	
 
@@ -98,12 +98,23 @@ void sum_while()
 		int_num  += 3;
 		printf("buf : %d int_num : %d \n",buf,int_num);
 	}
+
 	printf("결과 : %d\n", buf);
 
 	return;
 }
 void sum_do_while()
 {
+	int int_num = 0,buf = 0; 
+
+	do{
+		buf += int_num;
+		int_num  += 3;
+		printf("buf : %d int_num : %d \n",buf,int_num);
+	} while(int_num < 100);
+
+	printf("결과 : %d\n", buf);
+
 	return;
 }
 
