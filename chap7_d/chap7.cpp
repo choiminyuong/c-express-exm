@@ -7,7 +7,23 @@
 
 int main()
 {
+	double buf = 1,result =1; ;
+	
+	int x = 1;
+
 	puts("1 ~ 100 까지의 짝수의 곱을 구하는 프로그램.");
+	
+	for(x=1; x<100; x++){
+		
+		// %2 : 짝수의 정의 어떠한 수를 2로 나누었을때 그 나머지가 0 인 경우 짝수.
+		if(x % 2 == 0){
+			buf = result;
+			result = buf * x;
+			printf("%d * %.1f = %.1f\n",x,buf,x*buf);
+		}
+	}
+
+	printf("1~100까지의 곱 : %.1f \n",buf);
 	return 0;
 }
 
