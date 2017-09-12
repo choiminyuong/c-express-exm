@@ -1,5 +1,9 @@
+#include <typeinfo> 
+#include <iostream>
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
 
 /*
  * 1 - 2 
@@ -137,6 +141,7 @@ void sum_do_while()
 #define DIGIT4 4
 
 void separate_int(int target);
+void separate_str();
 int power10(int num);
 
 int main()
@@ -145,7 +150,7 @@ int main()
 	int type = 0;
 
 	puts("입력한 정수를 역으로 출력 보고자하는 스타일 입력(0:int로 처리하는 경우, 1:str로 처리하는 경우)");
-	scanf("%d"&type);
+	scanf("%d",&type);
 	fflush(stdin);
 
 	switch(type){
@@ -164,7 +169,7 @@ int main()
 			if(number_int < 0){
 				puts("음수는 입력 불가.");
 			} else{
-
+				separate_str();
 			}
 		break;
 		default:
@@ -175,7 +180,18 @@ int main()
 }
 
 void separate_str(){
+
+	char* size_befo=NULL;
+	char* buf = NULL;
+	
 	puts("임의의 정수를 하나 입력");
+	scanf("%s",size_befo);
+
+	printf("sizeof : %d\n",sizeof(size_befo));
+	//buf = (char)malloc((size_befo+1)*sizeof(char));
+	//fflush(stdin);
+
+
 	return;
 }
 
