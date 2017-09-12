@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <ctype.h>
 
 /*
  * 1 - 2 
  * 1부터 100까지의 짝수의 곱을 구하는 프로그램을 작성하라
 */
 
+/*
 int main()
 {
 	double buf = 1,result =1; ;
@@ -26,6 +28,7 @@ int main()
 	printf("1~100까지의 곱 : %.1f \n",buf);
 	return 0;
 }
+*/
 
 /*
  * 2 - 3
@@ -36,11 +39,93 @@ int main()
 */
 
 /*
+void sum_for();
+void sum_while();
+void sum_do_while();
+
+int main()
+{	
+	char type = 0;
+
+	puts("확인하고자 하는 타입의 반복문을 입력\na : while b : for c : do..while");
+	scanf("%c",&type);
+	fflush(stdin);
+
+	if(isalpha(type)){
+		switch(type){
+			case 'a': 
+				sum_while();
+			break;
+			case 'b': 
+				sum_for();
+			break;
+			case 'c': 
+				sum_do_while();
+			break;
+
+		default:
+			puts("a,b,c외에 잘못된 문자를 입력하였습니다.");
+		break;
+	}
+} else {
+		puts("문자를 입력하시오");
+	}	
+
+	return 0;
+}
+
+void sum_for()
+{
+	int int_num = 0,buf = 0; 
+
+
+	for(int_num = 0; int_num < 100; int_num+=3)
+	{
+		buf += int_num;
+		printf("buf : %d int_num : %d \n",buf,int_num);
+	}
+
+	printf("결과 : %d\n", buf);
+
+	return;
+}
+
+void sum_while()
+{
+	int int_num = 0,buf = 0; 
+	
+	while(int_num < 100){
+		buf += int_num;
+		int_num  += 3;
+		printf("buf : %d int_num : %d \n",buf,int_num);
+	}
+
+	printf("결과 : %d\n", buf);
+
+	return;
+}
+void sum_do_while()
+{
+	int int_num = 0,buf = 0; 
+
+	do{
+		buf += int_num;
+		int_num  += 3;
+		printf("buf : %d int_num : %d \n",buf,int_num);
+	} while(int_num < 100);
+
+	printf("결과 : %d\n", buf);
+
+	return;
+}
+*/
+
+/*
  * 3 -4
  * 사용자가 입력한 특정한 정수의 자리를 반대로 바꾸어 출력하는 프로그램을 작성하라 
  * 예들어서 사용자가 정수 1206을 입력하였다면 6021이 출려되어야 한다.
  * 만양 음수를 입력하면 오류 메시지를 출력하라.
- * do...whiile 문을 사용하여 보라
+ * do...while 문을 사용하여 보라
  * (힌트) 1의 자리수는 n % 10으로 구할 수 있다. 10의 자리수는 먼저 n을 10으로 나눈 후에 n % 10 하면된다.
  * 100의 자리수는 n을 100으로 나눈 후에 n % 10하면 된다.
  * 한번 반복할때마다 하나의 자리수가 구해지도록 하라
@@ -48,6 +133,72 @@ int main()
  * 정수를 입력하시오 : 1206
  * 6201
  * */
+
+#define DIGIT4 4
+
+void separate_int(int target);
+int power10(int num);
+
+int main()
+{
+	int number_int = 0;
+
+	puts("하나의 정수를 입력하시오");
+	scanf("%d",&number_int);
+	fflush(stdin);
+
+	if(number_int < 0){
+		puts("음수는 입력 불가.");
+	} else{
+		separate_int(number_int);
+	}
+
+	return 0;
+}
+
+void separate_int(int target)
+{
+	int separate_val = 0;
+	int digiarr[DIGIT4] ={0,};
+	int buf10 = 0, buf100 = 0, buf1000 = 0;
+
+
+	do{
+		switch(separate_val){
+			case 0: 
+				digiarr[separate_val]=target % 10;
+			break;
+			case 1: 
+				buf10 = target / power10(1);
+				digiarr[separate_val] = buf10 % 10;
+			break;
+			case 2: 
+				buf100 = target / 100;
+				digiarr[separate_val] = buf100 % 10;
+			break;
+			case 3: 
+				buf1000 = target /1000;
+				digiarr[separate_val] = buf1000 % 10;
+			break;
+		}
+		separate_val++;
+	}while(separate_val < DIGIT4);
+	
+	for(int i=0; i<DIGIT4; i++)
+	{
+		printf("%d",digiarr[i]);	
+	}
+	puts("");
+
+	return ;
+}
+
+int power10(int num){
+	if(num == 0)
+		return 1;
+	return 10*power10(num-1);
+}
+
 
 /*
  * 3 - 5

@@ -432,4 +432,10 @@ __pycache__/
 # End of https://www.gitignore.io/api/vim,linux,macos,windows,eclipse,visualstudio
 
 *.o
+
+# exe file 
 chap5
+chap6
+chap7
+chap8
+chap9
