@@ -1,5 +1,9 @@
+#include <typeinfo> 
+#include <iostream>
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
 
 /*
  * 1 - 2 
@@ -137,23 +141,58 @@ void sum_do_while()
 #define DIGIT4 4
 
 void separate_int(int target);
+void separate_str();
 int power10(int num);
 
 int main()
 {
 	int number_int = 0;
+	int type = 0;
 
-	puts("하나의 정수를 입력하시오");
-	scanf("%d",&number_int);
+	puts("입력한 정수를 역으로 출력 보고자하는 스타일 입력(0:int로 처리하는 경우, 1:str로 처리하는 경우)");
+	scanf("%d",&type);
 	fflush(stdin);
 
-	if(number_int < 0){
-		puts("음수는 입력 불가.");
-	} else{
-		separate_int(number_int);
-	}
+	switch(type){
+		case 0:
+			puts("하나의 정수를 입력하시오");
+			scanf("%d",&number_int);
+			fflush(stdin);
 
+			if(number_int < 0){
+				puts("음수는 입력 불가.");
+			} else{
+				separate_int(number_int);
+			}
+		break;
+		case 1:
+			if(number_int < 0){
+				puts("음수는 입력 불가.");
+			} else{
+				separate_str();
+			}
+		break;
+		default:
+			puts("잘못된 입력입니다.");
+		break;
+	}
 	return 0;
+}
+
+void separate_str(){
+
+	char* size_befo=NULL;
+	char* buf = NULL;
+	
+	puts("임의의 정수를 하나 입력");
+	scanf("%s",size_befo);
+
+	printf("sizeof : %d\n",sizeof(size_befo));
+	//buf = (char)malloc((size_befo+1)*sizeof(char));
+	//fflush(stdin);
+
+
+	return;
 }
 
 void separate_int(int target)
