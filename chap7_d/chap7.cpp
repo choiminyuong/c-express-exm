@@ -38,6 +38,7 @@ int main()
  * (c) do..while
 */
 
+/*
 void sum_for();
 void sum_while();
 void sum_do_while();
@@ -117,6 +118,7 @@ void sum_do_while()
 
 	return;
 }
+*/
 
 /*
  * 3 -4
@@ -131,6 +133,72 @@ void sum_do_while()
  * 정수를 입력하시오 : 1206
  * 6201
  * */
+
+#define DIGIT4 4
+
+void separate_int(int target);
+int power10(int num);
+
+int main()
+{
+	int number_int = 0;
+
+	puts("하나의 정수를 입력하시오");
+	scanf("%d",&number_int);
+	fflush(stdin);
+
+	if(number_int < 0){
+		puts("음수는 입력 불가.");
+	} else{
+		separate_int(number_int);
+	}
+
+	return 0;
+}
+
+void separate_int(int target)
+{
+	int separate_val = 0;
+	int digiarr[DIGIT4] ={0,};
+	int buf10 = 0, buf100 = 0, buf1000 = 0;
+
+
+	do{
+		switch(separate_val){
+			case 0: 
+				digiarr[separate_val]=target % 10;
+			break;
+			case 1: 
+				buf10 = target / power10(1);
+				digiarr[separate_val] = buf10 % 10;
+			break;
+			case 2: 
+				buf100 = target / 100;
+				digiarr[separate_val] = buf100 % 10;
+			break;
+			case 3: 
+				buf1000 = target /1000;
+				digiarr[separate_val] = buf1000 % 10;
+			break;
+		}
+		separate_val++;
+	}while(separate_val < DIGIT4);
+	
+	for(int i=0; i<DIGIT4; i++)
+	{
+		printf("%d",digiarr[i]);	
+	}
+	puts("");
+
+	return ;
+}
+
+int power10(int num){
+	if(num == 0)
+		return 1;
+	return 10*power10(num-1);
+}
+
 
 /*
  * 3 - 5
