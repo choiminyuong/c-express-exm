@@ -266,48 +266,45 @@ int main()
 	fflush(stdin);
 
 
-	if(isalpha(user) == FALSE){
-		while(user > 0 && check == TRUE){
-			puts("값 비교 ");
-			if(user < com_val){
-				puts("up");
+	do {
+		if((isalpha(user) == 0) && user < com_val){
+			if(isalpha(user) == TRUE){
 
-				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
-				scanf("%d",&user);
-				fflush(stdin);
+				puts("숫자외 다른 입력 - 1");	
+				check = FALSE;
+				printf("user : %d, %d\n",user, isalpha(user));
 
-				if(isalpha(user)){
-					puts("숫자외 다른 입력 - 1");	
-					check = FALSE;
-					printf("user : %d, %d\n",user, isalpha(user));
-					return -1;
-				}
-			} else if(user > com_val) {
-				puts("down");
-
-				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
-				scanf("%d",&user);
-				fflush(stdin);
-
-				if(isalpha(user)){
-					puts("숫자외 다른 입력 - 2");	
-					check = FALSE;
-					printf("user : %d, %d \n",user, isalpha(user));
-					return -1;
-				}
-			} else if(user < 0){
-				printf("음수 입력 : %d \n",user);
-					return -1;
+				return -1;
 			} else{
-				printf("사용자 입력값 : %d ,컴퓨터 랜덤값 : %d\n",user,com_val);
-					printf("user : %d, %d \n",user, isalpha(user));
-				break;
+				puts("up");
+				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료 -1");
+
+				scanf("%d",&user);
+				fflush(stdin);
 			}
+		} else if((isalpha(user) == 0) && user > com_val) {
+			if(isalpha(user) == TRUE){
+				puts("숫자외 다른 입력 - 2");	
+				check = FALSE;
+				printf("user : %d, %d \n",user, isalpha(user));
+				return -1;
+			}
+			else {
+				puts("down");
+				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료 -2 ");
+				scanf("%d",&user);
+				fflush(stdin);
+			}
+		} else if(user < 0){
+			printf("음수 입력 : %d \n",user);
+				return -1;
+		} else{
+			printf("값 확인 사용자 입력값 : %d ,컴퓨터 랜덤값 : %d\n",user,com_val);
+			printf("user : %d, %d \n",user, isalpha(user));
+			break;
 		}
-	} else if(isalpha(user) == TRUE){
-		puts("정수외에 다른 입력.");
-		return 0;
-	}
+	}while(user > 0 && check == TRUE);
+
 	return 0;
 }
 
