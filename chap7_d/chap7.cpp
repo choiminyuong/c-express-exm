@@ -1,9 +1,8 @@
-#include <typeinfo> 
-#include <iostream>
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>	
 
 /*
  * 1 - 2 
@@ -138,6 +137,7 @@ void sum_do_while()
  * 6201
  * */
 
+/*
 #define DIGIT4 4
 
 void separate_int(int target);
@@ -237,15 +237,53 @@ int power10(int num){
 		return 1;
 	return 10*power10(num-1);
 }
+*/
 
 
 /*
  * 3 - 5
- * 프로그램에서 미리 결덩된 정답을 사용자가 알아맞히는 게임을 설계하고 작성하여 보라 사용자가 하나의 수를 추측하면 프로그램은 
+ * 프로그램에서 미리 결정된 정답을 사용자가 알아맞히는 게임을 설계하고 작성하여 보라 사용자가 하나의 수를 추측하면 프로그램은 
  * 그 수가 정답보다 높은지 낮은지만 알려준다.
  * 정답은 1 ~ 100 사이의 수라고 가정한다 사용자가 정답을 맞힐 때 까지 프로그램은 반복하여 숫자를 입력하라는 메시지를 내보낸다.
  * 사용자가 음수를 입력하면 반복이 중단되도록 하라
 */
+
+int main()
+{
+	int user = 0, com_val = 0;
+
+	srand(time(NULL)); // seed적용
+
+	com_val = (rand() % 100);
+
+	puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
+	scanf("%d",&user);
+	fflush(stdin);
+
+	do{
+		puts("값 비교 ");
+		if(user < com_val){
+			puts("up");
+
+			puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
+			scanf("%d",&user);
+			fflush(stdin);
+		} else if(user > com_val) {
+			puts("down");
+
+			puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
+			scanf("%d",&user);
+			fflush(stdin);
+		} else if(user < 0){
+			printf("음수 입력 : %d \n",user);
+			break;
+		} else{
+			printf("사용자 입력값 : %d ,컴퓨터 랜덤값 : %d\n",user,com_val);
+			break;
+		}
+	}while(user > 0);
+	return 0;
+}
 
 /*
  * 4 - 6
