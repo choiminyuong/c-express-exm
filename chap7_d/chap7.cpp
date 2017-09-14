@@ -1,8 +1,13 @@
 #include <stdio.h>
+#include <iostream>	
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>	
+
+#define FALSE 	0
+#define TRUE	0
+
 
 /*
  * 1 - 2 
@@ -250,7 +255,7 @@ int power10(int num){
 
 int main()
 {
-	int user = 0, com_val = 0;
+	int user = 0, com_val = 0, check = TRUE;
 
 	srand(time(NULL)); // seed적용
 
@@ -260,28 +265,49 @@ int main()
 	scanf("%d",&user);
 	fflush(stdin);
 
-	do{
-		puts("값 비교 ");
-		if(user < com_val){
-			puts("up");
 
-			puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
-			scanf("%d",&user);
-			fflush(stdin);
-		} else if(user > com_val) {
-			puts("down");
+	if(isalpha(user) == FALSE){
+		while(user > 0 && check == TRUE){
+			puts("값 비교 ");
+			if(user < com_val){
+				puts("up");
 
-			puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
-			scanf("%d",&user);
-			fflush(stdin);
-		} else if(user < 0){
-			printf("음수 입력 : %d \n",user);
-			break;
-		} else{
-			printf("사용자 입력값 : %d ,컴퓨터 랜덤값 : %d\n",user,com_val);
-			break;
+				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
+				scanf("%d",&user);
+				fflush(stdin);
+
+				if(isalpha(user)){
+					puts("숫자외 다른 입력 - 1");	
+					check = FALSE;
+					printf("user : %d, %d\n",user, isalpha(user));
+					return -1;
+				}
+			} else if(user > com_val) {
+				puts("down");
+
+				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
+				scanf("%d",&user);
+				fflush(stdin);
+
+				if(isalpha(user)){
+					puts("숫자외 다른 입력 - 2");	
+					check = FALSE;
+					printf("user : %d, %d \n",user, isalpha(user));
+					return -1;
+				}
+			} else if(user < 0){
+				printf("음수 입력 : %d \n",user);
+					return -1;
+			} else{
+				printf("사용자 입력값 : %d ,컴퓨터 랜덤값 : %d\n",user,com_val);
+					printf("user : %d, %d \n",user, isalpha(user));
+				break;
+			}
 		}
-	}while(user > 0);
+	} else if(isalpha(user) == TRUE){
+		puts("정수외에 다른 입력.");
+		return 0;
+	}
 	return 0;
 }
 
