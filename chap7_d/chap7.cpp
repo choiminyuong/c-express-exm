@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>	
+ 
 
 #define FALSE 	0
 #define TRUE	0
@@ -255,56 +256,35 @@ int power10(int num){
 
 int main()
 {
-	int user = 0, com_val = 0, check = TRUE;
+	int user = 1, com_val = 0, check = 1;
+	int flag = 1;
 
 	srand(time(NULL)); // seed적용
 
 	com_val = (rand() % 100);
 
-	puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료");
-	scanf("%d",&user);
-	fflush(stdin);
+	for(; flag == 1;){
+		
+		flag = 0;
 
-
-	do {
-		if((isalpha(user) == 0) && user < com_val){
-			if(isalpha(user) == TRUE){
-
-				puts("숫자외 다른 입력 - 1");	
-				check = FALSE;
-				printf("user : %d, %d\n",user, isalpha(user));
-
-				return -1;
-			} else{
-				puts("up");
-				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료 -1");
-
-				scanf("%d",&user);
-				fflush(stdin);
-			}
-		} else if((isalpha(user) == 0) && user > com_val) {
-			if(isalpha(user) == TRUE){
-				puts("숫자외 다른 입력 - 2");	
-				check = FALSE;
-				printf("user : %d, %d \n",user, isalpha(user));
-				return -1;
-			}
-			else {
-				puts("down");
-				puts("하나의 정수를 입력하세요. 음수 입력시 반복 종료 -2 ");
-				scanf("%d",&user);
-				fflush(stdin);
-			}
-		} else if(user < 0){
-			printf("음수 입력 : %d \n",user);
-				return -1;
-		} else{
-			printf("값 확인 사용자 입력값 : %d ,컴퓨터 랜덤값 : %d\n",user,com_val);
-			printf("user : %d, %d \n",user, isalpha(user));
-			break;
-		}
-	}while(user > 0 && check == TRUE);
-
+		puts("하나의 정수 입력 | 음수입력시 종료");
+		scanf("%d",&user);
+		fflush(stdin);
+		
+		if(user < 0){
+			puts("음수 입력 ");
+			flag = 0;
+			return 0;
+		} else if(com_val == user) {
+			printf("user : %d com_val : %d \n", user, com_val);
+		} else if(com_val > user){
+			puts("up");
+			flag = 1;
+		} if(com_val < user){
+			puts("down");
+			flag = 1;
+		} 
+	}
 	return 0;
 }
 

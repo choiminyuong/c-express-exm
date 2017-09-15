@@ -1,4 +1,5 @@
 CC        = g++
+
 CFLAGS    = -I/usr/local/include
 CPPFLAGS  = -I/usr/local/include
 LFLAGS    =
