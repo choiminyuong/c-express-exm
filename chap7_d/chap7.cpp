@@ -254,6 +254,7 @@ int power10(int num){
  * 사용자가 음수를 입력하면 반복이 중단되도록 하라
 */
 
+/*
 int main()
 {
 	int user = 1, com_val = 0, check = 1;
@@ -287,12 +288,13 @@ int main()
 	}
 	return 0;
 }
+*/
 
 /*
  * 4 - 6
  * 반복루프를 사용하여 다음과 같은 패턴을 출력하는 프로글램을 작성하라
  *
- * 1.
+ 1.
  ******
  ******
  ******
@@ -300,7 +302,7 @@ int main()
  ******
  ******
  ******
- * 2.
+ 2.
  *
  **
  ***
@@ -328,7 +330,73 @@ int main()
    ******
   ********
  **********
+
 */
+
+void pattern_1();
+void pattern_2();
+void pattern_3();
+
+int main(){
+
+	int view = 0;
+
+	puts("pattern print | case 1~4");
+	scanf("%d",&view);
+	fflush(stdin);
+
+	switch(view){
+		case 1:
+			pattern_1();
+		break;
+		case 2:
+			pattern_2();
+		break;
+		case 3:
+			pattern_3();
+		break;
+		case 4:
+		break;
+		default:
+			puts("해당없는 패턴");
+		break;
+	}
+	return 0;
+}
+
+void pattern_1(){
+	for(int line = 0; line < 9; line++){
+		printf("******");
+		puts("");
+	} 
+	puts("");
+
+	return ;
+}
+
+void pattern_2(){
+	for(int line = 0; line < 9; line++){
+		for(int star = 0; star < line; star++){
+			printf("*");
+		}
+		puts("");
+	}
+	return ;
+}
+
+void pattern_3(){
+	for(int line = 0; line < 9; line++){
+		for(int star = 8; star > line; star--){
+			printf("*");
+		}
+		puts("");
+	}
+	return ;
+}
+
+void pattern_4(){
+	puts("");
+}
 
 /*
  * 5 - 7
