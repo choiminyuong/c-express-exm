@@ -11,11 +11,10 @@ OBJECT = chap7.o
 SRCS = $(OBJECT:.o=.c)
 
 $(OBJECT) : chap7.cpp
-	g++ -o chap7 chap7.cpp
+	g++ -g -o chap7 chap7.cpp
 
 #chap7 : $(OBJECT)
 #	$(CC) -o t $(OBJECT)
 
 clean:
 	rm -f $(OBJECT) $(TARGET)
-	rm -r *.out
