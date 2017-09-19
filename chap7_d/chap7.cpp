@@ -4,6 +4,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>	
+#include <typeinfo>
+#include <unistd.h>
  
 
 #define FALSE 	0
@@ -254,41 +256,60 @@ int power10(int num){
  * 사용자가 음수를 입력하면 반복이 중단되도록 하라
 */
 
-/*
+
 int main()
 {
-	int user = 1, com_val = 0, check = 1;
-	int flag = 1;
+	int user = 1, com_val = 0;
 
 	srand(time(NULL)); // seed적용
 
 	com_val = (rand() % 100);
 
-	for(; flag == 1;){
-		
-		flag = 0;
-
-		puts("하나의 정수 입력 | 음수입력시 종료");
-		scanf("%d",&user);
-		fflush(stdin);
-		
-		if(user < 0){
-			puts("음수 입력 ");
-			flag = 0;
+	do{
+			 
+		if (std::cin.fail()){
+		   std::cin.clear();
+		   std::cin.ignore (256, '\n');
+		}	   
+		// cin.ignore (numeric_limits<streamsize>::max(), '\n);
+		sleep( 1 );
+		if(user < 100 && user > -1 && user != 0){
+			if(user == com_val){
+				puts("값 일치");
+				return 0;
+			}
+			 else if((user > com_val) == 1) {
+				puts("\ndown");
+				std::cout << "\n하나의 정수를 입력하시오 : 음수 입력시 종료 -1 "; 
+				std::cin >> user;
+				printf("user : %u \n", user);
+			} else if((user < com_val) ==1) {
+				puts("\nup");
+				std::cout<< "\n하나의 정수를 입력하시오 : 음수 입력시 종료  -2"; 
+				std::cin >> user;
+				printf("user : %u \n", user);
+			} else {
+				puts("else print");
+			}
+		}
+		else {
+			puts("잘못된 입력");
 			return 0;
-		} else if(com_val == user) {
-			printf("user : %d com_val : %d \n", user, com_val);
-		} else if(com_val > user){
-			puts("up");
-			flag = 1;
-		} if(com_val < user){
-			puts("down");
-			flag = 1;
-		} 
-	}
+		}
+	}while(scanf ("%d",&user)!=1);
+
+/*
+ // 리턴값 확인차 작성한 코드
+	int result = scanf ("%d",&user);
+	printf("user2: %d \n", result);
+	printf("user2: %x \n", result);
+	printf("user2: %c \n", result);
+	printf("user2: %s \n", result);
+*/
+	
 	return 0;
 }
-*/
+
 
 /*
  * 4 - 6
@@ -333,9 +354,13 @@ int main()
 
 */
 
+/*
 void pattern_1();
 void pattern_2();
 void pattern_3();
+void pattern_4();
+void pattern_4_1();
+void pattern_4_2();
 
 int main(){
 
@@ -356,6 +381,7 @@ int main(){
 			pattern_3();
 		break;
 		case 4:
+			pattern_4();
 		break;
 		default:
 			puts("해당없는 패턴");
@@ -395,8 +421,73 @@ void pattern_3(){
 }
 
 void pattern_4(){
-	puts("");
+
+	int kind = 0;
+
+	puts("사각형 : 1 탑 모양 : 2");
+	scanf("%d",&kind);
+	fflush(stdin);
+
+	switch(kind){
+		case 1:
+			pattern_4_1();
+			break;
+		case 2:
+			pattern_4_2();
+			break;
+		default:
+			puts("해당 케이스는 없습니다.");
+			break;
+	}
 }
+
+void pattern_4_1(){
+	int hight = 0  ,wide = 0;
+
+	puts("폭과 넓이를 입력하세요.");
+	scanf("%d",&hight);
+	fflush(stdin);
+
+	return;
+}
+
+void pattern_4_2(){
+	int hight = 0, wide = 0;
+	int out_line = 0, in_line = 0;
+
+	puts("폭과 높이를 입력하세요.");
+	scanf("%d %d",&hight,&wide);
+	fflush(stdin);
+	
+	for(out_line = 0; out_line < hight; out_line++){
+		// 위, 아래
+		if((out_line % hight) == 0){
+			for(int i = 0; i < wide+1; i++){
+				printf("*");
+			}
+			puts("");
+		} else if(out_line == wide){
+			// 위, 아래
+			if((out_line % hight) == 0){
+				for(int i = 0; i < wide+1; i++){
+					printf("*");
+				}
+				puts("");
+			}
+		}
+		// 벽면
+		for(in_line = 0; in_line < wide+1; in_line++){
+			if((in_line % wide) == 0){
+				printf("*");
+			} else {
+				printf(" ");
+			puts("");
+			}
+		}
+	}
+	return;
+}
+*/
 
 /*
  * 5 - 7
