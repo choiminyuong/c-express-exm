@@ -6,6 +6,7 @@
 #include <time.h>	
 #include <typeinfo>
 #include <unistd.h>
+#include <cstdio>
  
 
 #define FALSE 	0
@@ -501,7 +502,7 @@ void pattern_4_2(){
  *
  * 다시계산하겠습니까?(y/n) : n
 */
-
+/*
 void fuel_efficiency ();
 
 int main(){
@@ -538,6 +539,7 @@ void fuel_efficiency (){
 
 	printf("연비는 %d km/L입니다.\n", result);
 }
+*/
 
 /*
  * 6 - 9
@@ -551,6 +553,46 @@ void fuel_efficiency (){
  * 반복을 종료하는 메뉴인 Q는 break문을 이용하여 구현하도록 하라.
  * 
  */
+
+int main()
+{
+	char type = getchar();
+
+	puts("계산기 예제");
+
+
+	do{
+		puts("A(덧셈) S(뺄셈) M(곱셈) D(나눗셈) Q(끝내기)");
+
+
+	}while(type != 'q' || type != 'Q')
+	
+	return 0;
+}
+/*
+	switch(type)
+
+		case 97:
+		case 65:
+			break;
+		case 83:
+		case 115:
+			break;
+		case 77:
+		case 109:
+			break;
+		case 68:
+		case 100:
+			break;
+		case 81:
+		case 114:
+			break;
+			break;
+		default:
+			puts("잘 못된 입력입니다,");
+			break;
+*/
+
 
 /*
  * 7 - 11
