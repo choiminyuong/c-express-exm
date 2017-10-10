@@ -502,25 +502,17 @@ void pattern_4_2(){
  * 다시계산하겠습니까?(y/n) : n
 */
 
-void fuel_efficiency (int distance_km, int input_fuel_L);
+void fuel_efficiency ();
 
 int main(){
-	int input_fuel_L = 0;
-	int distance_km = 0;
 	char agein = 'y';
 
 	puts("자동차의 연비를 반복적으로 계산해주는 프로그램.");
-	puts("주입한 연료의 양을 입력하시오(L)");
-	scanf("%d",&input_fuel_L);
-	fflush(stdin);
-	puts("주행 거리를 입력하시오(km)");
-	scanf("%d",&distance_km);
-	fflush(stdin);
 
 	do{
 		if(agein == 'y' || agein == 'Y'){
-			fuel_efficiency(distance_km, input_fuel_L);
-			puts("다시 계산 하시겠습니까?");
+			fuel_efficiency();
+			puts("다시 계산 하시겠습니까?(y || n)");
 		}
 		else if(agein == 'n' || agein == 'N'){
 			break;
@@ -530,8 +522,17 @@ int main(){
 	return 0;
 }
 
-void fuel_efficiency (int distance_km, int input_fuel_L){
+void fuel_efficiency (){
+	int input_fuel_L = 0;
+	int distance_km = 0;
 	int result = 0;
+
+	puts("주입한 연료의 양을 입력하시오(L)");
+	scanf("%d",&input_fuel_L);
+	fflush(stdin);
+	puts("주행 거리를 입력하시오(km)");
+	scanf("%d",&distance_km);
+	fflush(stdin);
 
 	result = distance_km / input_fuel_L;
 
