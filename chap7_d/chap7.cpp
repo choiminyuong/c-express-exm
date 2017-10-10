@@ -256,7 +256,7 @@ int power10(int num){
  * 사용자가 음수를 입력하면 반복이 중단되도록 하라
 */
 
-
+/*
 int main()
 {
 	int user = 1, com_val = 0;
@@ -298,18 +298,17 @@ int main()
 		}
 	}while(scanf ("%d",&user)!=1);
 
-/*
  // 리턴값 확인차 작성한 코드
 	int result = scanf ("%d",&user);
 	printf("user2: %d \n", result);
 	printf("user2: %x \n", result);
 	printf("user2: %c \n", result);
 	printf("user2: %s \n", result);
-*/
 	
 	return 0;
 }
 
+*/
 
 /*
  * 4 - 6
@@ -502,6 +501,42 @@ void pattern_4_2(){
  *
  * 다시계산하겠습니까?(y/n) : n
 */
+
+void fuel_efficiency (int distance_km, int input_fuel_L);
+
+int main(){
+	int input_fuel_L = 0;
+	int distance_km = 0;
+	char agein = 'y';
+
+	puts("자동차의 연비를 반복적으로 계산해주는 프로그램.");
+	puts("주입한 연료의 양을 입력하시오(L)");
+	scanf("%d",&input_fuel_L);
+	fflush(stdin);
+	puts("주행 거리를 입력하시오(km)");
+	scanf("%d",&distance_km);
+	fflush(stdin);
+
+	do{
+		if(agein == 'y' || agein == 'Y'){
+			fuel_efficiency(distance_km, input_fuel_L);
+			puts("다시 계산 하시겠습니까?");
+		}
+		else if(agein == 'n' || agein == 'N'){
+			break;
+		} 
+	}while(scanf("%c",&agein)); 
+
+	return 0;
+}
+
+void fuel_efficiency (int distance_km, int input_fuel_L){
+	int result = 0;
+
+	result = distance_km / input_fuel_L;
+
+	printf("연비는 %d km/L입니다.\n", result);
+}
 
 /*
  * 6 - 9
